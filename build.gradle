@@ -1,0 +1,19 @@
+allprojects {
+    apply plugin: 'idea'
+    task hello << { task -> println "I'm $task.project.name" }
+}
+
+subprojects {
+    hello << {println "- I am a subproject of sandpit"}
+
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testCompile "junit:junit:4.11"
+    }
+
+}
