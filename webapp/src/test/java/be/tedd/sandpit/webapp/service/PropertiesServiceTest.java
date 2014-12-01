@@ -11,15 +11,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 
-/**
- * Created by doug on 26/11/14.
- */
-@RunWith(value = SpringJUnit4ClassRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/application-context.xml" })
-public class ServiceATest {
+public class PropertiesServiceTest {
 
     @Resource
-    private ServiceA serviceA;
+    private PropertiesService serviceA;
 
     @Before
     public void before() {
@@ -34,7 +31,17 @@ public class ServiceATest {
 
     @Test
     public void testValueA() {
-        Assert.assertEquals("Hello there", serviceA.getValueA());
+        Assert.assertEquals("Hello there test", serviceA.getValueA());
+    }
+
+    @Test
+    public void testLoadedValueA() {
+        Assert.assertEquals("Hello there loaded", serviceA.getLoadedValueA());
+    }
+
+    @Test
+    public void testGeneratedValueA() {
+        Assert.assertEquals("Hello there generated", serviceA.getGeneratedValueA());
     }
 
 }

@@ -13,9 +13,17 @@ public class ComplexBeanTest {
 
     @Test
     public void testCreate() {
+        ComplexBean complexBean = new ComplexBean();
+        Assert.assertNotNull(complexBean);
+        Assert.assertNull(complexBean.getStr());
+        Assert.assertNull(complexBean.getSimpleBean());
+
         SimpleBean simpleBean = new SimpleBean();
-        Assert.assertNotNull(simpleBean);
-        Assert.assertNull(simpleBean.getStr());
+        complexBean.setSimpleBean(simpleBean);
+        complexBean.setStr("123");
+
+        Assert.assertNotNull(complexBean.getSimpleBean());
+        Assert.assertEquals("123", complexBean.getStr());
     }
 
 }
