@@ -24,6 +24,6 @@
     <bean class="be.tedd.sandpit.webapp.config.PropertiesLoadedByClass" />
 
     <!-- Load properties from webapp.properties -->
-    <context:property-placeholder location="webapp.properties"/>
+    <context:property-placeholder location="classpath:webapp.properties"/>
 
 </beans>

@@ -1,5 +1,36 @@
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+
 dependencies {
     compile project(':common')
     compile 'org.springframework:spring-context:4.1.2.RELEASE'
+    compile 'org.springframework:spring-web:4.1.2.RELEASE'
     testCompile 'org.springframework:spring-test:4.1.2.RELEASE'
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.eclipse.jetty:jetty-server:9.2.5.v20141112'
+    }
+}
+
+[jettyRun, jettyRunWar]*.with {
+    httpPort = 8080
+
+    // Use the following to configure connectors with more precision
+//    def httpConnector = jettyRun.class.classLoader.loadClass('org.mortbay.jetty.nio.SelectChannelConnector').newInstance()
+//    httpConnector.port = 8080
+//    httpConnector.host = '10.0.1.1'
+//    def httpsConnector = jettyRun.class.classLoader.loadClass('org.mortbay.jetty.security.SslSocketConnector').newInstance()
+//    httpsConnector.port = 8443
+//    httpsConnector.keystore = "keystore.jks"
+//    httpsConnector.keyPassword = "keystorepwd"
+//    httpsConnector.truststore = "cacerts"
+//    httpsConnector.trustPassword = "cacertspwd"
+//    connectors = [httpConnector]
 }
