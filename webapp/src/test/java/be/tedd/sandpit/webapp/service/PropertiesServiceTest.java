@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -15,17 +17,19 @@ import javax.annotation.Resource;
 @ContextConfiguration(locations = { "classpath:spring/application-context.xml" })
 public class PropertiesServiceTest {
 
+    private static final Logger logger = LoggerFactory.getLogger(PropertiesServiceTest.class);
+
     @Resource
     private PropertiesService serviceA;
 
     @Before
     public void before() {
-        System.out.println("BEFORE");
+        logger.debug("PropertiesServiceTest.before() called");
     }
 
     @After
     public void after() {
-        System.out.println("AFTER");
+        logger.debug("PropertiesServiceTest.after() called");
     }
 
 
