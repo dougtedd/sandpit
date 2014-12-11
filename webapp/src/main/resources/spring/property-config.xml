@@ -9,7 +9,7 @@
     <bean id="propertiesFactory" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="propertiesArray">
             <list>
-                <bean class="be.tedd.sandpit.webapp.config.PropertiesGeneratedByClass" factory-method="generateProperties"/>
+                <bean class="be.tedd.sandpit.webapp.properties.PropertiesGeneratedByClass" factory-method="generateProperties"/>
             </list>
         </property>
     </bean>
@@ -21,7 +21,7 @@
     </bean>
 
     <!-- Instantiate bean that loads properties using a PropertySource -->
-    <bean class="be.tedd.sandpit.webapp.config.PropertiesLoadedByClass" />
+    <bean class="be.tedd.sandpit.webapp.properties.PropertiesLoadedByClass" />
 
     <!-- Load properties from webapp.properties -->
     <context:property-placeholder location="classpath:webapp.properties"/>

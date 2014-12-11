@@ -4,10 +4,10 @@ apply plugin: 'jetty'
 
 dependencies {
     compile project(':common')
-    compile 'org.springframework:spring-context:4.1.2.RELEASE'
-    compile 'org.springframework:spring-web:4.1.2.RELEASE'
-    testCompile 'org.springframework:spring-test:4.1.2.RELEASE'
-    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'org.springframework:spring-context:' + springVersion
+    compile 'org.springframework:spring-web:' + springVersion
+    testCompile 'org.springframework:spring-test:' + springVersion
+    providedCompile 'javax.servlet:javax.servlet-api:' + javaxServletVersion
 }
 
 buildscript {
@@ -15,7 +15,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.eclipse.jetty:jetty-server:9.2.5.v20141112'
+        classpath 'org.eclipse.jetty:jetty-server:' + jettyVersion
     }
 }
 

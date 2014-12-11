@@ -1,4 +1,4 @@
-package be.tedd.sandpit.webapp.config;
+package be.tedd.sandpit.webapp.properties;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
