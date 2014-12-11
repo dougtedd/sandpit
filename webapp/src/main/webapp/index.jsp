@@ -1,3 +1,1 @@
-<html>
-<body>Hello there!</body>
-</html>
+<jsp:forward page="/app/home"/>

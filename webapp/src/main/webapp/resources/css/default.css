@@ -1,0 +1,25 @@
+body{
+    font-size: 12px;
+    line-height: 18px;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.header {
+    font-size: large;
+    font-weight: bold;
+}
+
+.menu {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.footer {
+    font-style: italic;
+    border: #C1C1C1 solid 1px;
+    border-radius:2px;
+}

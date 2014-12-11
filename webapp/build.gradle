@@ -3,11 +3,15 @@ apply plugin: 'jetty'
 
 
 dependencies {
-    compile project(':common')
-    compile 'org.springframework:spring-context:' + springVersion
-    compile 'org.springframework:spring-web:' + springVersion
-    testCompile 'org.springframework:spring-test:' + springVersion
     providedCompile 'javax.servlet:javax.servlet-api:' + javaxServletVersion
+
+    compile project(':common')
+
+    compile 'org.springframework:spring-webmvc:' + springVersion
+    compile 'org.apache.tiles:tiles-jsp:' + tilesVersion
+//    compile 'org.apache.tiles:tiles-el:' + tilesVersion
+
+    testCompile 'org.springframework:spring-test:' + springVersion
 }
 
 buildscript {

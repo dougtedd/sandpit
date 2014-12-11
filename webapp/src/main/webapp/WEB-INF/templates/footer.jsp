@@ -1,0 +1,1 @@
+<div class="footer">Footer &copy;2014 Tedd BVBA</div>

@@ -8,6 +8,7 @@ ext {
     springVersion = "4.1.2.RELEASE"
     junitVersion = "4.11"
     jettyVersion = "9.2.5.v20141112"
+    tilesVersion = "3.0.5"
 }
 
 
@@ -33,15 +34,13 @@ subprojects {
     dependencies {
         // Use Log4J2 with SLF4J - see: http://architects.dzone.com/articles/using-log4j2-slf4j-spring-4
         compile "org.slf4j:log4j-over-slf4j:" + slf4jVersion
-        compile "org.slf4j:slf4j-api:" + slf4jVersion
         compile "org.apache.logging.log4j:log4j-slf4j-impl:" + log4jVersion
         compile "org.apache.logging.log4j:log4j-core:" + log4jVersion
-        compile "org.apache.logging.log4j:log4j-api:" + log4jVersion
         testCompile "junit:junit:" + junitVersion
     }
 
     configurations.all {
-        // Exclude Log4J1 dependencies
+        // Exclude Log4J v1 dependencies
         exclude (group: "org.slf4j", module: "slf4j-log4j12")
         exclude (group: "log4j", module: "log4j")
     }
