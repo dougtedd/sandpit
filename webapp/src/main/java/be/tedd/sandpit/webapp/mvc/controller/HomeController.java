@@ -1,4 +1,4 @@
-package be.tedd.sandpit.webapp.controller;
+package be.tedd.sandpit.webapp.mvc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

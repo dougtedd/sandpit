@@ -23,3 +23,7 @@ body{
     border: #C1C1C1 solid 1px;
     border-radius:2px;
 }
+
+.formError {
+    color: #a00
+}
