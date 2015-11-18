@@ -6,6 +6,7 @@ dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:' + javaxServletVersion
     providedCompile 'javax.servlet.jsp.jstl:jstl-api:' + jstlApiVersion
 
+    // dependency on the output jar of the common project
     compile project(':common')
 
     compile 'org.springframework:spring-webmvc:' + springVersion

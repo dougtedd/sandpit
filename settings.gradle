@@ -1,2 +1,2 @@
-include 'common', 'webapp'
+include 'common', 'jaxb', 'webapp'
 

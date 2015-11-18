@@ -1,5 +1,7 @@
 // Top level build definition
 
+// The list of subprojects is kept in settings.gadle
+
 // Global properties
 ext {
     javaxServletVersion = "3.1.0"
@@ -25,6 +27,7 @@ allprojects {
     }
 }
 
+// The following configuration applies only to the subprojects and not the top-level project
 subprojects {
     apply plugin: 'java'
 

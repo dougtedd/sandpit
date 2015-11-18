@@ -1,4 +1,4 @@
-package be.tedd.sandpit.common;
+package be.tedd.sandpit.jaxb;
 
 
 import org.junit.Assert;
@@ -7,16 +7,14 @@ import org.junit.Test;
 
 /**
  */
-public class SimpleBeanTest {
+public class JaxbTest {
 
 
     @Test
     public void testCreate() {
-        System.out.println("Running testCreate");
         SimpleBean simpleBean = new SimpleBean();
         Assert.assertNotNull(simpleBean);
         Assert.assertNull(simpleBean.getStr());
-        Assert.assertTrue(1==0);
     }
 
 }
