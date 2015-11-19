@@ -8,12 +8,16 @@ import org.junit.Test;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 
 
 /**
@@ -21,7 +25,7 @@ import java.io.StringWriter;
 public class JaxbTest {
 
     @Test
-    public void testMarshall() throws Exception {
+    public void testMarshallUnmarshall() throws Exception {
         // Build an order
         ObjectFactory factory = new ObjectFactory();
         Shiporder shiporder = factory.createShiporder();
@@ -38,6 +42,12 @@ public class JaxbTest {
         String xmlString = sw.toString();
         System.out.println(xmlString);
         Assert.assertTrue(xmlString.contains("orderid=\"ORDER-ID\""));
+
+        // Unmarshall the string and verify the content
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        InputStream stream = new ByteArrayInputStream(xmlString.getBytes(StandardCharsets.UTF_8));
+        Shiporder shiporder2 = (Shiporder) jaxbUnmarshaller.unmarshal(stream);
+        Assert.assertEquals("ORDER-ID", shiporder2.getOrderid());
     }
 
 }
