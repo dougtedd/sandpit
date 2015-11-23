@@ -33,6 +33,7 @@ buildscript {
 
 [jettyRun, jettyRunWar]*.with {
     httpPort = 8080
+    stopPort = 8090
 
     // Use the following to configure connectors with more precision
 //    def httpConnector = jettyRun.class.classLoader.loadClass('org.mortbay.jetty.nio.SelectChannelConnector').newInstance()
@@ -45,4 +46,9 @@ buildscript {
 //    httpsConnector.truststore = "cacerts"
 //    httpsConnector.trustPassword = "cacertspwd"
 //    connectors = [httpConnector]
+}
+
+task runJetty(dependsOn:jettyRun) {
+    println("Jetty started and stopped")
+
 }
