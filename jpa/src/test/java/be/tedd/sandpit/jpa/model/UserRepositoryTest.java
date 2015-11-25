@@ -79,6 +79,10 @@ public class UserRepositoryTest {
         int userCount = userJpaRepository.countUsers();
         Assert.assertEquals(1, userCount);
 
+        userJpaRepository.setFixedFirstnameFor("Zombie", "Head");
+        users = userCrudRepository.findByLastName("Head");
+        Assert.assertNotNull(users);
+        Assert.assertEquals("Zombie", users.get(0).getFirstName());
     }
 
 }
