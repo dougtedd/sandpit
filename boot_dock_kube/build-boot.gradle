@@ -4,14 +4,12 @@ buildscript {
     }
     dependencies {
         classpath('org.springframework.boot:spring-boot-gradle-plugin:1.3.1.RELEASE')
-        classpath('se.transmode.gradle:gradle-docker:1.2')
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
-apply plugin: 'docker'
 
 repositories {
     mavenCentral()
@@ -29,19 +27,3 @@ jar {
     baseName = 'boot_dock_kube'
     version =  '0.1.0'
 }
-
-// Docker group
-group = 'dougtedd'
-
-task buildDocker(type: Docker, dependsOn: build) {
-  push = true
-  applicationName = jar.baseName
-  dockerfile = file('src/main/docker/Dockerfile')
-  doFirst {
-    copy {
-      from jar
-      into stageDir
-    }
-  }
-}
-

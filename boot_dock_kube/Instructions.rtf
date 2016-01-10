@@ -1,10 +1,8 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Monaco;
-\f3\fmodern\fcharset0 Courier;}
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fmodern\fcharset0 Courier;
+}
 {\colortbl;\red255\green255\blue255;\red107\green0\blue1;\red234\green234\blue234;\red38\green38\blue38;
-\red245\green245\blue245;\red1\green30\blue103;\red246\green246\blue255;\red10\green86\blue216;\red14\green110\blue109;
-\red54\green72\blue81;\red242\green242\blue242;\red17\green137\blue135;\red154\green154\blue154;\red135\green135\blue135;
-\red210\green0\blue53;\red246\green246\blue246;\red83\green83\blue83;\red106\green106\blue106;}
+\red245\green245\blue245;\red242\green242\blue242;\red106\green106\blue106;}
 \paperw11900\paperh16840\margl1440\margr1440\vieww15900\viewh11440\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
@@ -113,11 +111,15 @@ http://192.168.99.101:8080/?name=from+a+docker+container\
 
 \f0\fs24 \
 \
-Kubernetes\
-\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b \cf0 Kubernetes\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
 Kubernetes overview of concepts: https://github.com/kubernetes/kubernetes/blob/release-1.1/docs/user-guide/README.md\
-\
 Running kubernetes on docker: https://github.com/kubernetes/kubernetes/blob/release-1.1/docs/getting-started-guides/docker.md\
+Tutorial on getting kubernetes to run on a Mac: http://container-solutions.com/trying-out-kubernetes/\
 \
 \
 Set the version of kubectl and download the latest:\
@@ -134,126 +136,98 @@ wget http://storage.googleapis.com/kubernetes-release/release/v$\{K8S_VERSION\}/
 \f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 \cf0 \
-Tutorial on getting kubernetes to run: http://container-solutions.com/trying-out-kubernetes/\
-\
-Get kubernetes going:\
-\pard\pardeftab720\partightenfactor0
-
-\f2 \cf6 \cb7 \expnd0\expndtw0\kerning0
-docker\cf8 -\cf9 \cb7 compose \cf6 \cb7 up\cf8  -\cf6 d\
-\
-Check all is running:\
-\pard\pardeftab720\partightenfactor0
-\cf0 \cb1 docker-compose ps\
-docker-compose logs\cf10 \
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-
-\f0 \cf0 \kerning1\expnd0\expndtw0 \
-\
-Open a tunnel to the docker machine:\
-machine=default; ssh -i ~/.docker/machine/machines/$machine/id_rsa docker@$(docker-machine ip $machine) -NL 8080:localhost:8080\
-\
-\
-kubectl 
-\f1\fs22 \CocoaLigature0 -s 127.0.0.1:8080 
-\f0\fs24 \CocoaLigature1 run kube-demo --image=
-\f2\fs26 \cf4 \cb11 \expnd0\expndtw0\kerning0
-dougtedd/gs-spring-boot-docker
-\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0  --port=8080\
-\
-List pods:\
-\pard\pardeftab720\partightenfactor0
-
-\f2 \cf9 \cb7 \expnd0\expndtw0\kerning0
-kubectl 
-\f1\fs22 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 -s 127.0.0.1:8080 
-\f2\fs24 \cf9 \cb7 \expnd0\expndtw0\kerning0
-\CocoaLigature1 get \cf6 \cb7 pods
-\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-\cf0 \
+Start kubernetes:\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f1\fs22 \cf0 \CocoaLigature0 kubectl -s 127.0.0.1:8080 
-\fs28 \cf4 \cb5 \expnd0\expndtw0\kerning0
-\CocoaLigature1 get nodes\
-\
-\pard\pardeftab720\partightenfactor0
-
-\f2\fs24 \cf9 \cb7 kubectl 
-\f1\fs22 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 -s 127.0.0.1:8080 
-\f2\fs24 \cf9 \cb7 \expnd0\expndtw0\kerning0
-\CocoaLigature1 expose rc \cf6 \cb7 kube\cf8 -\cf6 demo\cf8  --\cf6 target\cf8 -\cf6 port\cf8 =\cf12 \cb7 8080\cf8 \cb7  --\cf6 type\cf8 =\cf6 NodePort
-\f1\fs28 \cf4 \cb5 \
-\pard\pardeftab720\partightenfactor0
-
-\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
-\pard\pardeftab720\partightenfactor0
-
-\f2 \cf13 \expnd0\expndtw0\kerning0
-List the services:\
-
-\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
-\clvertalt \clshdrawnil \clwWidth17880\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx4320
-\clvertalt \clshdrawnil \clwWidth17880\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl0 \clpadr0 \gaph\cellx8640
-\pard\intbl\itap1\partightenfactor0
-\cf13 \cell 
-\pard\intbl\itap1\pardeftab720\partightenfactor0
-\cf9 \cb7 kubectl 
-\f1\fs22 \cf0 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 -s 127.0.0.1:8080 
-\f2\fs24 \cf9 \cb7 \expnd0\expndtw0\kerning0
-\CocoaLigature1 get \cf6 services\cell \lastrow\row
+\f1\fs22 \cf0 \CocoaLigature0 docker-compose up -d\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
-\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
-Get the NODE_PORT:\
+\f0\fs24 \cf0 \CocoaLigature1 \
+Check  kubernetes running:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf0 \CocoaLigature0 docker-compose ps\
+docker-compose logs\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \CocoaLigature1 \
+Open a tunnel to the docker machine:\
+
+\f1\fs22 machine=default; ssh -i ~/.docker/machine/machines/$machine/id_rsa docker@$(docker-machine ip $machine) -NL 8080:localhost:8080\
+
+\f0\fs24 \
+Deploy the application in the tube:\
+
+\f1\fs22 kubectl \CocoaLigature0 -s 127.0.0.1:8080 \CocoaLigature1 run kube-demo --image=\cf4 \cb6 \expnd0\expndtw0\kerning0
+dougtedd/boot_dock_kube\cf0 \cb1 \kerning1\expnd0\expndtw0  --port=8080\
+
+\f0\fs24 \
+List pods:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf0 \CocoaLigature0 kubectl -s 127.0.0.1:8080 get pods
+\f0\fs24 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+List nodes:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf0 \CocoaLigature0 kubectl -s 127.0.0.1:8080 get nodes
+\f0\fs24 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+Expose the application as a service:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf0 \CocoaLigature0 kubectl -s 127.0.0.1:8080 expose rc kube-demo --target-port=8080 --type=NodePort
+\f0\fs24 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+List the runnings services:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf0 \CocoaLigature0 kubectl -s 127.0.0.1:8080 get services
+\f0\fs24 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+Get the NODE_PORT of the application:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf0 \CocoaLigature0 kubectl -s 127.0.0.1:8080 get svc kube-demo -o yaml | grep nodePort
+\f0\fs24 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+View the application in Safari:\
+\
 \pard\pardeftab720\partightenfactor0
-
-\f2 \cf9 \cb7 \expnd0\expndtw0\kerning0
-kubectl -s 127.0.0.1:8080 get svc \cf6 \cb7 kube\cf8 -\cf6 demo\cf8  -\cf10 o\cf8  \cf6 yaml\cf8  | \cf9 \cb7 grep \cf6 \cb7 nodePort
-\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
-\
-\
-\pard\pardeftab720\partightenfactor0
-
-\f2 \cf6 \cb7 \expnd0\expndtw0\kerning0
-curl\cf8  -\cf10 s\cf8  \cf6 http\cf8 :\cf14 //$(docker-machine ip YOUR_DOCKER_MACHINE_NAME):NODE_PORT
-\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
-
-\f2 \cf6 \cb7 \expnd0\expndtw0\kerning0
-curl\cf8  -\cf10 s\cf8  \cf6 http\cf8 :\cf14 //192.168.99.101:31891
-\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
-\
-\
+\cf0 \
 Scale up:\
-\pard\pardeftab720\partightenfactor0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f2 \cf9 \cb7 \expnd0\expndtw0\kerning0
-kubectl -s 127.0.0.1:8080 scale rc \cf6 \cb7 kube\cf8 -\cf6 demo\cf8  --\cf6 replicas\cf8 =\cf12 \cb7 3
-\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
-\
+\f1\fs22 \cf0 \CocoaLigature0 kubectl -s 127.0.0.1:8080 scale rc kube-demo --replicas=3
+\f0\fs24 \CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
 Try to delete a pod:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f2 \cf9 \cb7 \expnd0\expndtw0\kerning0
-kubectl -s 127.0.0.1:8080 delete \cf10 \cb7 pod\cf8  \cf4 \cb7 $(\cf9 \cb7 kubectl -s 127.0.0.1:8080 \cf6 \cb7 get\cf8  -\cf10 o\cf8  \cf9 \cb7 yaml \cf6 \cb7 po\cf8  -\cf10 l\cf8  \cf6 run\cf8 =\cf6 kube\cf8 -\cf6 demo\cf8  | \cf6 egrep\cf8  -\cf10 o\cf8  \cf15 \cb7 "kube-demo-[a-z0-9]\{5\}"\cf8 \cb7  | \cf6 head\cf8  -\cf12 \cb7 1\cf4 )
-\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
-\
-\
+\f1\fs22 \cf0 \CocoaLigature0 kubectl -s 127.0.0.1:8080 delete pod $(kubectl -s 127.0.0.1:8080 get -o yaml po -l run=kube-demo | egrep -o "kube-demo-[a-z0-9]\{5\}" | head -1)\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf0 \CocoaLigature1 \
 Start the UI:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf0 \CocoaLigature0 kubectl -s 127.0.0.1:8080 create -f kube-ui-rc.yml --namespace=kube-system
+\f0\fs24 \CocoaLigature1 \
+
+\f1\fs22 \CocoaLigature0 kubectl -s 127.0.0.1:8080 create -f kube-ui-svc.yml --namespace=kube-system --validate=false\
+
+\f0\fs24 \CocoaLigature1 \
+View the UI\
 \pard\pardeftab720\partightenfactor0
 
-\f3\fs28 \cf4 \cb16 \expnd0\expndtw0\kerning0
-kubectl 
-\f2\fs24 \cf9 \cb7 -s 127.0.0.1:8080 
-\f3\fs28 \cf4 \cb16 create -f kube-ui-rc.yaml --namespace\cf17 \cb16 =\cf4 \cb16 kube-system\
-kubectl 
-\f2\fs24 \cf9 \cb7 -s 127.0.0.1:8080 
-\f3\fs28 \cf4 \cb16 create -f kube-ui-svc.yaml --namespace\cf17 \cb16 =\cf4 \cb16 kube-system --validate=false
-\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
-\
-\pard\pardeftab720\partightenfactor0
-
-\f3\fs28 \cf18 \expnd0\expndtw0\kerning0
+\f2\fs28 \cf7 \expnd0\expndtw0\kerning0
 http://127.0.0.1:8080/api/v1/proxy/namespaces/kube-system/services/kube-ui/#/dashboard/
 \f0\fs32 \
 \pard\pardeftab720\partightenfactor0
